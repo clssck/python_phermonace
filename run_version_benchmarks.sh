@@ -40,6 +40,7 @@ from benchmarks.cpu_benchmarks import run_cpu_benchmarks
 from benchmarks.data_structure_benchmarks import run_data_structure_benchmarks
 from benchmarks.io_benchmarks import run_io_benchmarks
 from benchmarks.async_benchmarks import run_async_benchmarks
+from benchmarks.version_specific_benchmarks import run_version_specific_benchmarks
 from dataclasses import asdict
 
 print('  Running CPU benchmarks...')
@@ -54,7 +55,10 @@ io = run_io_benchmarks()
 print('  Running async benchmarks...')
 async_results = run_async_benchmarks()
 
-all_results = cpu + ds + io + async_results
+print('  Running version-specific benchmarks...')
+version_specific = run_version_specific_benchmarks()
+
+all_results = cpu + ds + io + async_results + version_specific
 
 # Save results
 output_file = '$RESULTS_DIR/${ver}_results.json'
